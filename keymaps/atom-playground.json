@@ -1,5 +1,5 @@
 {
   "atom-workspace": {
-    "ctrl-alt-o": "atom-playground:fetch"
+    "ctrl-alt-o": "atom-playground:toggle"
   }
 }

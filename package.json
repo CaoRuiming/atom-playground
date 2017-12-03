@@ -6,7 +6,7 @@
   "keywords": [
   ],
   "activationCommands": {
-    "atom-workspace": "atom-playground:fetch"
+    "atom-workspace": "atom-playground:toggle"
   },
   "repository": "https://github.com/atom/atom-playground",
   "license": "MIT",

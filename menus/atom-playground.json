@@ -3,7 +3,7 @@
     "atom-text-editor": [
       {
         "label": "Activate Atom Playground",
-        "command": "atom-playground:fetch"
+        "command": "atom-playground:toggle"
       }
     ]
   },
@@ -15,8 +15,8 @@
           "label": "Atom Playground",
           "submenu": [
             {
-              "label": "Activate",
-              "command": "atom-playground:fetch"
+              "label": "Toggle",
+              "command": "atom-playground:toggle"
 						}
           ]
         }
