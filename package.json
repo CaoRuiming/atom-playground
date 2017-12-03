@@ -1,0 +1,18 @@
+{
+  "name": "atom-playground",
+  "main": "./lib/atom-playground",
+  "version": "0.0.0",
+  "description": "A plugin to simulate the behavior of Apple's Swift Playgrounds in Atom",
+  "keywords": [
+  ],
+  "activationCommands": {
+    "atom-workspace": "atom-playground:fetch"
+  },
+  "repository": "https://github.com/atom/atom-playground",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Activate Atom Playground",
+        "command": "atom-playground:fetch"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "Atom Playground",
+          "submenu": [
+            {
+              "label": "Activate",
+              "command": "atom-playground:fetch"
+						}
+          ]
+        }
+      ]
+    }
+  ]
+}
