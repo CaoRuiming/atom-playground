@@ -1,7 +1,8 @@
-sandbox = locals()
+global_sandbox = globals()
+local_sandbox = locals()
 
 class AugmentedLine:
-	def __init__(self, number, source):
+	def __init__(self, number, source, scope):
 		self.number = number
 		self.source = source
 		self.result = ""
@@ -9,17 +10,24 @@ class AugmentedLine:
 		self.expression = ""
 		self.executed = False
 		self.parsed = False
+		self.scope = scope
 
-	def evaluate(self, scope):
+	def evaluate(self):
 		if self.expression == "":
 			self.executed = True
 			return
-		returned = eval(self.expression, sandbox)
+		try:
+			returned = eval(self.expression, global_sandbox, local_sandbox)
+		except:
+			self.executed = True
+			self.result = "error"
+			return
+
 		self.executed = True
 		self.expression_result = returned
 		if (len(self.variable_name) > 0):
 			self.result = self.variable_name + " = " + format_result(self.expression_result)
-			exec(self.result, sandbox)
+			exec(self.result, global_sandbox, local_sandbox)
 		else:
 			self.result = format_result(self.expression_result)
 		self.executed = True

@@ -8,9 +8,9 @@ def main():
 	lines = file_to_lines(file_name)
 	counter = 1
 	for line in lines:
-		aug_line = AugmentedLine(counter, line)
+		aug_line = AugmentedLine(counter, line, local_sandbox)
 		aug_line.parse()
-		aug_line.evaluate(sandbox)
+		aug_line.evaluate()
 		print(aug_line.result)
 		counter += 1
 	print("done.")
