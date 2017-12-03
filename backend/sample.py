@@ -6,6 +6,8 @@ z = 9
 
 if (z > 23):
 	x = x + 2
+else:
+	x = 9
 
 h = "hi"
 h

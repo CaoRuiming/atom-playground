@@ -77,10 +77,12 @@ class AugmentedInterpreter:
 		stack = list(local_sandbox)
 		curr_indent = 0
 		expected_indent = False
+		last_if = False
 		while(line_number + 1 < self.number_lines):
 			line_number = line_number + 1
 			# run eval loop
 			curr_line = self.aug_lines[line_number]
+			print(curr_line.source)
 			if curr_line.source == "":
 				#skip empty line
 				continue
@@ -88,13 +90,31 @@ class AugmentedInterpreter:
 				if expected_indent:
 					# entering indented code
 					curr_indent = curr_line.indent
-					curr_line.evaluate(local_sandbox)
+					if curr_line.source == "else:":
+						curr_line.result = not last_if
+						if not last_if:
+							# else is true
+							expected_indent = True
+						else:
+							# else is false
+							expected_indent = False
+					else:
+						curr_line.evaluate(local_sandbox)
 				else:
 					continue
 			elif curr_line.indent < curr_indent: 
 				# back to higher scope
 				curr_indent = curr_line.indent
-				curr_line.evaluate(local_sandbox)
+				if curr_line.source == "else:":
+					curr_line.result = not last_if
+					if not last_if:
+						# else is true
+						expected_indent = True
+					else:
+						# else is false
+						expected_indent = False
+				else:
+					curr_line.evaluate(local_sandbox)
 			else:
 				# same flow
 				curr_line.evaluate(local_sandbox)
@@ -105,6 +125,7 @@ class AugmentedInterpreter:
 					expected_indent = True
 				else:
 					expected_indent = False
+				last_if = curr_line.expression_result
 			else:
 				expected_indent = False
 
