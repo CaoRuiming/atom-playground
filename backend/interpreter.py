@@ -82,7 +82,6 @@ class AugmentedInterpreter:
 			line_number = line_number + 1
 			# run eval loop
 			curr_line = self.aug_lines[line_number]
-			print(curr_line.source)
 			if curr_line.source == "":
 				#skip empty line
 				continue
